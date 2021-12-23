@@ -1,0 +1,33 @@
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+
+  &--show {
+    display: block;
+  }
+}
+
+.modal__wrapper {
+  position: absolute;
+  top: 63vh;
+  left: 50%;
+  transform: translate(-50%, -50vh);
+  z-index: 12;
+  width: 430px;
+
+  @media ($tablet-max-width) {
+    width: 442px;
+  }
+
+  @media ($mobile-max-width) {
+    width: 270px;
+  }
+}

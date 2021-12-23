@@ -1,0 +1,349 @@
+.login {
+  position: relative;
+  width: 430px;
+  z-index: 500;
+  background-color: $color-bg;
+  box-shadow: 0 5px 32px rgba(226, 221, 215, 0.24);
+
+  &--new-page {
+    margin: 0 auto;
+
+    .login__close {
+      display: none;
+    }
+  }
+
+  @media ($tablet-max-width) {
+    width: 442px;
+  }
+
+  @media ($mobile-max-width) {
+    width: 270px;
+  }
+}
+
+.login__logo {
+  display: none;
+  position: absolute;
+  width: 66px;
+  height: 66px;
+  left: 22px;
+  top: 155px;
+  z-index: 10;
+
+  @media ($mobile-max-width) {
+    width: 52px;
+    height: 52px;
+    top: 100px;
+  }
+
+  &:hover,
+  &:focus {
+    filter: brightness(0);
+  }
+
+  &:active {
+    opacity: 0.6;
+  }
+
+  &--new-page {
+    display: block;
+  }
+}
+
+.login__logo img {
+  display: block;
+  width: 66px;
+  height: 66px;
+
+  @media ($mobile-max-width) {
+    width: 52px;
+    height: 52px;
+  }
+}
+
+.login h2 {
+  position: relative;
+  font-family: "Cormorant Garamond", "Cambria", serif;
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 44px;
+  color: $color-text-dark;
+  text-align: center;
+  margin: 0;
+  padding-top: 188px;
+
+  @media ($mobile-max-width) {
+    font-size: 24px;
+    line-height: 31px;
+    padding-top: 121px;
+  }
+
+  &::before {
+    position: absolute;
+    content: "";
+    width: 430px;
+    height: 138px;
+    right: 0;
+    top: 0;
+    background-image: url("../img/login/login_desktop.jpg");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: 430px 138px;
+
+    @media (min-resolution: 2dppx) {
+      background-image: url("../img/login/login_desktop@2x.jpg");
+    }
+  }
+
+  @media ($tablet-max-width) {
+    &::before {
+      width: 442px;
+      height: 138px;
+      background-image: url("../img/login/login_tablet.jpg");
+      background-size: 442px 138px;
+
+
+      @media (min-resolution: 2dppx) {
+        background-image: url("../img/login/login_tablet@2x.jpg");
+      }
+    }
+
+    @media ($mobile-max-width) {
+      &::before {
+        width: 270px;
+        height: 84px;
+        background-image: url("../img/login/login_mobile.jpg");
+        background-size: 270px 84px;
+
+        @media (min-resolution: 2dppx) {
+          background-image: url("../img/login/login_mobile@2x.jpg");
+        }
+      }
+    }
+  }
+}
+
+.login form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  margin: 0 45px;
+  margin-top: 25px;
+  padding-bottom: 25px;
+
+  @media ($tablet-max-width) {
+    margin: 25px 51px 0;
+    padding-bottom: 23px;
+  }
+
+  @media ($mobile-max-width) {
+    gap: 22px;
+    margin: 19px 15px 0;
+  }
+}
+
+.login input {
+  @include font($main-font, 500);
+  display: block;
+  font-size: 14px;
+  line-height: 21px;
+  border: none;
+  border-bottom: 1px solid $color-text-dark;
+  border-radius: 0;
+  cursor: pointer;
+  color: $color-text-dark;
+  background-color: transparent;
+  padding: 8px 0 7px;
+
+  @media ($mobile-max-width) {
+    padding: 8px 0;
+  }
+
+  &:hover,
+  &:focus {
+    outline: 1px solid $color-text-light;
+  }
+}
+
+.login input::placeholder {
+  color: $color-text-light;
+}
+
+.login__restore button[type="button"] {
+  @include font($main-font, 500);
+  display: block;
+  font-size: 12px;
+  line-height: 18px;
+  text-align: center;
+  cursor: pointer;
+  color: $color-text-light;
+  background-color: transparent;
+  border: none;
+  padding: 2px 5px;
+  padding-right: 0;
+  margin-left: auto;
+  margin-top: -27px;
+
+  @media ($mobile-max-width) {
+    margin-top: -20px;
+  }
+
+  &:hover,
+  &:focus {
+    outline: 1px solid $color-text-light;
+  }
+
+  &:active {
+    opacity: 0.7;
+  }
+}
+
+.login button[type="submit"] {
+  @include font($main-font, 500);
+  display: block;
+  font-size: 16px;
+  line-height: 21px;
+  text-align: center;
+  cursor: pointer;
+  color: $color-basic-white;
+  background-color: $color-decoration;
+  border: 1px solid $color-decoration;
+  margin-top: 10px;
+  padding: 23px;
+  transition: all 0.4s ease-in-out;
+
+  @media ($tablet-max-width) {
+    margin-top: 13px;
+  }
+
+  @media ($mobile-max-width) {
+    margin-top: 10px;
+  }
+
+  &:hover,
+  &:focus {
+    border: 1px solid $color-text-light;
+    background-color: $color-text-light;
+    color: $color-text-dark;
+  }
+
+  &:active {
+    opacity: 0.8;
+  }
+}
+
+.login__sign-up {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-decoration: none;
+  color: $color-text-dark;
+  margin: 0 auto;
+  margin-top: -18px;
+  padding: 5px;
+  padding-bottom: 2px;
+
+  @media ($mobile-max-width) {
+    margin-top: 11px;
+  }
+
+  &:hover,
+  &:focus {
+    outline: 1px solid $color-text-light;
+  }
+
+  &:active {
+    opacity: 0.7;
+  }
+}
+
+.login__sign-up span {
+  @include font($main-font, 500);
+  display: block;
+  font-size: 14px;
+  line-height: 21px;
+  color: $color-text-light;
+}
+
+.login__sign-up b {
+  @include font($main-font, 500);
+  display: block;
+  font-size: 14px;
+  line-height: 21px;
+  color: $color-text-dark;
+  margin-right: 5px;
+  margin-left: 8px;
+
+  @media ($mobile-max-width) {
+    margin-right: 0;
+    margin-left: 4px;
+  }
+}
+
+.login__close button[type="button"] {
+  display: block;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  padding: 16px;
+  right: 10px;
+  top: 10px;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 16px;
+    right: 8px;
+    width: 18px;
+    height: 2px;
+    background-color: $color-text-dark;
+  }
+
+  &::before {
+    transform: rotate(46deg);
+  }
+
+  &::after {
+    transform: rotate(-46deg);
+  }
+
+  &:hover,
+  &:focus {
+    outline: 1px solid $color-decoration;
+  }
+
+  &:active {
+    outline: 1px solid $color-text-light;
+  }
+
+  &:hover::before,
+  &:hover::after,
+  &:focus::before,
+  &:focus::after {
+    background-color: $color-decoration;
+  }
+
+  &:active::before,
+  &:active::after {
+    background-color: $color-text-light;
+  }
+
+  @media ($tablet-max-width) {
+    width: 40px;
+    height: 40px;
+
+    &::before,
+    &::after {
+      top: 19px;
+      right: 8px;
+      width: 23px;
+      height: 2px;
+    }
+  }
+}

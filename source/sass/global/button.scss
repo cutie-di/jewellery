@@ -1,0 +1,14 @@
+.button {
+  display: block;
+  font-family: "Poppins", "Arial", sans-serif;
+  font-weight: 500;
+  text-decoration: none;
+  text-align: center;
+  border: 1px solid $color-decoration;
+  border-radius: none;
+  cursor: pointer;
+
+  @media ($mobile-max-width) {
+    margin: 0 auto;
+  }
+}

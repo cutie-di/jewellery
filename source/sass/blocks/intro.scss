@@ -1,0 +1,75 @@
+.intro {
+  background-color: $color-photo-overlay-opacity-07;
+  box-shadow: inset 100vw 100vh $color-photo-overlay-opacity-07;
+  background-image: url("../img/intro/intro_desktop.jpg");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+
+  @media (min-resolution: 2dppx) {
+    background-image: url("../img/intro/intro_desktop@2x.jpg");
+  }
+
+  @media ($tablet-max-width) {
+    background-image: url("../img/intro/intro_tablet.jpg");
+
+    @media (min-resolution: 2dppx) {
+      background-image: url("../img/intro/intro_tablet@2x.jpg");
+    }
+  }
+
+  @media ($mobile-max-width) {
+    background-image: url("../img/intro/intro_mobile.jpg");
+
+    @media (min-resolution: 2dppx) {
+      background-image: url("../img/intro/intro_mobile@2x.jpg");
+    }
+  }
+}
+
+.intro__wrapper {
+  padding: 172px 8% 171px;
+
+  @media ($tablet-max-width) {
+    padding: 172px 10% 171px 8%;
+  }
+
+  @media ($mobile-max-width) {
+    padding: 179px 8% 178px 8%;
+  }
+}
+
+.intro__wrapper h2 {
+  font-family: "Cormorant Garamond", "Cambria", serif;
+  font-weight: 700;
+  font-size: 45px;
+  line-height: 58px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  text-align: center;
+  color: $color-basic-white;
+  margin: 10px auto;
+  margin-bottom: -17px;
+
+  @media ($mobile-max-width) {
+    position: relative;
+    font-size: 38px;
+    line-height: 49px;
+  }
+}
+
+.intro__wrapper p {
+  font-family: "Cormorant Garamond", "Cambria", serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 38px;
+  line-height: 49px;
+  text-align: center;
+  color: $color-basic-white;
+  margin: 10px auto;
+
+  @media ($mobile-max-width) {
+    font-size: 34px;
+    line-height: 44px;
+  }
+}
