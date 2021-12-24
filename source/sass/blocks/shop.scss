@@ -31,6 +31,7 @@
 
 .shop__link {
   display: inline-block;
+  vertical-align: baseline;
   color: $color-text-dark;
   text-align: center;
   text-decoration: none;
@@ -219,6 +220,7 @@
     span {
       @include font($main-font, 500);
       display: inline-block;
+      vertical-align: baseline;
       font-size: 16px;
       line-height: 21px;
       color: $color-text-dark;

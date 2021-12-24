@@ -1,4 +1,3 @@
-//'use strict';
 // utils
 
 function isEscEvent(evt) {

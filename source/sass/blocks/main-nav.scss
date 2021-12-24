@@ -103,6 +103,7 @@
 .main-nav__toggle span {
   position: relative;
   display: inline-block;
+  vertical-align: baseline;
   width: 25px;
   height: 2px;
   vertical-align: bottom;
@@ -454,6 +455,7 @@
 
   @media ($tablet-max-width) {
     display: inline-block;
+    vertical-align: baseline;
     color: $color-basic-white;
     padding-left: 0;
 
@@ -524,6 +526,7 @@
   @media ($tablet-max-width) {
     @include font($main-font, 500);
     display: inline-block;
+    vertical-align: baseline;
     font-size: 18px;
     line-height: 23px;
     text-decoration: none;
@@ -548,6 +551,7 @@
 
   @media ($tablet-max-width) {
     display: inline-block;
+    vertical-align: baseline;
     text-decoration: none;
     color: $color-basic-white;
     margin: 0;

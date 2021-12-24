@@ -26,6 +26,7 @@
 
 .blog__link {
   display: inline-block;
+  vertical-align: baseline;
   color: $color-text-dark;
   text-align: center;
   text-decoration: none;
@@ -276,6 +277,7 @@
 
 .blog__card-content a {
   display: inline-block;
+  vertical-align: baseline;
   text-align: center;
   text-decoration: none;
   margin: 0;
