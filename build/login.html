@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="Login for jewellery shop Chjewellery">
+  <title>Login Chjewellery</title>
+  <link rel="preload" href="fonts/Poppins-Medium.woff2" as="font" crossorigin="">
+  <link rel="preload" href="fonts/CormorantGaramond-Bold.woff2" as="font" crossorigin="">
+  <link rel="icon" href="favicon.ico">
+  <link rel="icon" href="img/favicons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="img/favicons/180.png">
+  <link href="css/style.min.css" rel="stylesheet">
+</head>
+
+<body class="page-body nojs">
+  <main class="page-main">
+    <h1 class="visually-hidden">Jewellery shop Chjewellery login page</h1>
+
+    <section class="login login--new-page">
+      <a class="login__logo login__logo--new-page" href="main.html" aria-label="Chjewellery logo" tabindex="0">
+        <picture>
+          <!--1х: 66px/66px; 2x: 122px/122px-->
+          <img src="img/logo/main-logo.svg" width="66" height="66" alt="Chjewellery logo">
+        </picture>
+      </a>
+      <h2>Log In</h2>
+      <form method="post" name="login-form" action="https://echo.htmlacademy.ru">
+        <input placeholder="Your E-mail" type="email" id="modal-email" name="email" autocomplete="off" aria-label="Your E-mail" required="">
+        <label class="visually-hidden" for="modal-email">Your E-mail</label>
+
+        <input type="password" placeholder="Password" id="modal-password" name="password" aria-label="Password" required="">
+        <label class="visually-hidden" for="modal-password">Password</label>
+
+        <div class="login__restore">
+          <button type="button" aria-label="Restore password button">Forgot your password?</button>
+        </div>
+
+        <button type="submit" aria-label="Button login">
+          Log In
+        </button>
+
+        <a href="#" class="login__sign-up">
+          <span>Don’t have an account?</span>
+          <b>Sign up</b>
+        </a>
+
+        <div class="login__close">
+          <button type="button" aria-label="Close popup button"></button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+</body>
+
+</html>
