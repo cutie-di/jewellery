@@ -10,7 +10,9 @@
  * Released on: December 13, 2021
  */
 
-  (function (global, factory) {
+/* eslint-disable */
+
+(function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Swiper = factory());
@@ -10078,32 +10080,3 @@
 
 })));
 //# sourceMappingURL=swiper-bundle.js.map
-
-
-//var shopSlider = document.querySelector('.swiper-container .shop__list-wrapper');
-
-
-//function initSwiper(slider) {
-//  return new Swiper(slider, {
-//    speed: 400,
-//    sliderPerview: 'auto',
-//    navigation: {
-//      nextEl: '.swiper-button-next shop__button shop__button--next',
-//      prevEl: '.swiper-button-prev shop__button shop__button--prev',
-//    },
-//  });
-//}
-
-//function initShopSlider() {
-//  if (!shopSlider) {
-//    return;
-//  }
-
-//  var swiper = initSwiper(shopSlider);
-
-//  swiper.on('slideChange', function () {
-//    document.activeElement.blur();
-//  });
-//}
-
-//initShopSlider();
