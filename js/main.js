@@ -26,12 +26,12 @@ function initSwiper(slider) {
   /* eslint-disable-next-line */
   return new Swiper(slider, {
     spaceBetween: 30,
-    speed: 1500,
-    autoplay: {
-      delay: 3000,
-      stopOnLastSlide: false,
-      disableOnInteraction: false,
-    },
+    //speed: 1500,
+    //autoplay: {
+    //  delay: 3000,
+    //  stopOnLastSlide: false,
+    //  disableOnInteraction: false,
+    //},
     watchOverflow: true,
 
     breakpoints: {
@@ -248,64 +248,123 @@ saveFillData(loginForm);
 
 // accordion
 
-const accordionFaqItems = document.querySelectorAll('.faq__accordion-item');
-const accordionFilterBlocks = document.querySelectorAll('.filter__block');
+const accordionFaqTriggers = document.querySelectorAll('.faq__trigger');
+const accordionFilterTriggers = document.querySelectorAll('.filter__trigger');
 
-function onFaqButtonClick() {
-  accordionFaqItems.forEach((item) => {
-    item.addEventListener('click', (evt) => {
+const accordionTriggerDisable = (trigger) => {
+  trigger.disabled = true;
+  setTimeout(() => {
+    trigger.disabled = false;
+  }, 500);
+};
+
+const accordionFaqOpen = (trigger, body) => {
+  trigger.classList.add('faq__trigger--active');
+  trigger.setAttribute('aria-expanded', 'true');
+  body.setAttribute('aria-hidden', 'false');
+  body.classList.add('faq__content--active');
+};
+
+const accordionFaqClose = (trigger, body) => {
+  trigger.classList.remove('faq__trigger--active');
+  trigger.setAttribute('aria-expanded', 'false');
+  body.setAttribute('aria-hidden', 'true');
+  body.classList.remove('faq__content--active');
+};
+
+const accordionFaqClosePrevious = (el) => {
+  const previousContent = el.closest('.faq__accordion-item').querySelector('.faq__content');
+  el.classList.remove('faq__trigger--active');
+  previousContent.classList.remove('faq__content--active');
+  el.setAttribute('aria-expanded', 'false');
+  previousContent.setAttribute('aria-hidden', 'true');
+};
+
+const onFaqButtonClick = () => {
+  accordionFaqTriggers.forEach((button) => {
+    button.addEventListener('click', (evt) => {
       const self = evt.currentTarget;
+      const trigger = self;
+      const body = self.closest('.faq__accordion-item').querySelector('.faq__content');
 
-      const currentControl = self.querySelector('.faq__button');
-      const currentContent = self.querySelector('.faq__content');
-
-      if (self.classList.contains('faq__accordion-item--active')) {
-        self.classList.remove('faq__accordion-item--active');
-
-        currentControl.setAttribute('aria-expanded', 'false');
-        currentContent.setAttribute('aria-hidden', 'true');
+      if (trigger.classList.contains('faq__trigger--active')) {
+        accordionFaqClose(trigger, body);
+        accordionTriggerDisable(trigger);
       } else {
-        accordionFaqItems.forEach(((el) => {
-          if (el !== self) {
-            const previousControl = el.querySelector('.faq__button');
-            const previousContent = el.querySelector('.faq__content');
-            el.classList.remove('faq__accordion-item--active');
-            previousControl.setAttribute('aria-expanded', 'false');
-            previousContent.setAttribute('aria-hidden', 'true');
+        accordionFaqOpen(trigger, body);
+        accordionTriggerDisable(trigger);
+
+        accordionFaqTriggers.forEach((el) => {
+          if (el !== trigger) {
+            accordionFaqClosePrevious(el);
+            accordionTriggerDisable(trigger);
           }
-        }));
-        self.classList.add('faq__accordion-item--active');
-        currentControl.setAttribute('aria-expanded', 'true');
-        currentContent.setAttribute('aria-hidden', 'false');
+        });
       }
     });
   });
-}
+};
 
-function onFilterButtonClick() {
-  accordionFilterBlocks.forEach((item) => {
-    item.addEventListener('click', (evt) => {
+const setHeightOnTransitionEnd = (body) => {
+  body.addEventListener('transitionend', () => {
+    if (body.style.height !== '0px') {
+      body.style.height = 'auto';
+    }
+  });
+};
+
+const accordionFilterOpen = (trigger, body) => {
+  if (body.style.height === '0px' || window.getComputedStyle(body).height === '0px') {
+    trigger.classList.add('filter__trigger--active');
+    trigger.setAttribute('aria-expanded', 'true');
+    body.setAttribute('aria-hidden', 'false');
+    body.classList.add('filter__content--active');
+    body.style.height = `${body.scrollHeight}px`;
+  }
+};
+
+const accordionFilterClose = (trigger, body) => {
+  if (body.style.height !== '0px' && window.getComputedStyle(body).height !== '0px') {
+
+    trigger.classList.remove('filter__trigger--active');
+    trigger.setAttribute('aria-expanded', 'false');
+    body.setAttribute('aria-hidden', 'true');
+    body.style.height =  `${body.scrollHeight}px`;
+    setTimeout(() => {
+      body.style.height = '0';
+    }, 0);
+    setTimeout(() => {
+      body.classList.remove('filter__content--active');
+    }, 500);
+  }
+};
+
+const accordionFilterToggle = (target) => {
+  const trigger = target;
+  const body = target.closest('.filter__block').querySelector('.filter__content');
+
+  setHeightOnTransitionEnd(body);
+
+  if (trigger.classList.contains('filter__trigger--active')) {
+    accordionFilterClose(trigger, body);
+    accordionTriggerDisable(trigger);
+  } else {
+    accordionFilterOpen(trigger, body);
+    accordionTriggerDisable(trigger);
+  }
+};
+
+const onFilterButtonClick = () => {
+  accordionFilterTriggers.forEach((trigger) => {
+    trigger.addEventListener('click', (evt) => {
       const self = evt.currentTarget;
-      const currentControl = self.querySelector('.filter__button');
-      const currentContent = self.querySelector('.filter__list');
-
-      if (self.classList.contains('filter__block--active')) {
-        self.classList.remove('filter__block--active');
-
-        currentControl.setAttribute('aria-expanded', 'false');
-        currentContent.setAttribute('aria-hidden', 'true');
-      } else {
-        self.classList.add('filter__block--active');
-        currentControl.setAttribute('aria-expanded', 'true');
-        currentContent.setAttribute('aria-hidden', 'false');
-      }
+      accordionFilterToggle(self);
     });
   });
-}
+};
 
 onFaqButtonClick();
 onFilterButtonClick();
-
 
 // focus
 
