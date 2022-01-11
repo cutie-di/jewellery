@@ -133,7 +133,8 @@
   }
 }
 
-.filter__button {
+.filter__trigger {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -142,7 +143,9 @@
   cursor: pointer;
   border: none;
   width: 100%;
+  height: 100%;
   padding: 23px 23px 23px 25px;
+  transition: padding-bottom 500ms ease;
 
   &:hover,
   &:focus {
@@ -185,7 +188,7 @@
   }
 }
 
-.filter__button span {
+.filter__trigger span {
   @include font($main-font, 500);
   position: relative;
   font-size: 16px;
@@ -212,7 +215,7 @@
   }
 }
 
-.filter__button b {
+.filter__trigger b {
   position: relative;
   width: 16px;
   height: 11px;
@@ -242,26 +245,42 @@
   }
 }
 
-.filter__list {
+.filter__content {
   display: none;
+  height: 0;
+  overflow: hidden;
+  transition: height 500ms ease;
   list-style: none;
   padding: 0;
   margin: 0;
   margin-right: 45px;
   margin-left: 34px;
-  margin-bottom: 23px;
 
   @media ($tablet-max-width) {
-    margin: 0 45px 32px 51px;
+    margin: 0 45px 0 51px;
   }
 
   @media ($mobile-max-width) {
-    margin: 0 45px 20px 35px;
+    margin: 0 45px 0 35px;
   }
 }
 
-.filter__list li + li {
+.filter__content li + li {
   margin-top: 2px;
+}
+
+.filter__item {
+  &:last-child {
+    padding-bottom: 23px;
+
+    @media ($tablet-max-width) {
+      padding-bottom: 32px;
+    }
+
+    @media ($mobile-max-width) {
+      padding-bottom: 20px;
+    }
+  }
 }
 
 .filter__item input[type="checkbox"] + label {
@@ -354,10 +373,9 @@
   }
 }
 
-.filter__price .filter__list {
+.filter__price .filter__content {
   margin-left: 25px;
   margin-right: 10px;
-  margin-bottom: 11px;
 
   @media ($tablet-max-width) {
     margin-left: 52px;
@@ -372,9 +390,12 @@
   }
 }
 
+.filter__price .filter__range {
+  padding-bottom: 19px;
+}
+
 .filter__range {
   width: 200px;
-  margin-bottom: 19px;
 
   @media ($tablet-max-width) {
     width: 304px;
@@ -389,7 +410,6 @@
   position: relative;
   padding-top: 8px;
 }
-
 
 .filter__range-wrapper .filter__scale {
   height: 1px;
@@ -674,30 +694,32 @@
   }
 }
 
-.filter__block--active .filter__list {
-  display: block;
-}
-
-.filter__block--active .filter__button {
+.filter__trigger--active {
   padding-bottom: 17px;
+  transition: none;
 
   @media ($tablet-max-width) {
     padding-bottom: 15px;
   }
 }
 
-.filter__block--active .filter__button b {
+.filter__trigger--active b {
   &::after {
     top: 0;
     transform: rotate(180deg);
   }
 }
 
-.nojs .filter__list {
+.filter__content--active {
   display: block;
 }
 
-.nojs .filter__button {
+.nojs .filter__content {
+  display: block;
+  height: auto;
+}
+
+.nojs .filter__trigger {
   &:hover,
   &:focus {
     outline: 1px solid $color-text-dark;
@@ -717,6 +739,6 @@
   }
 }
 
-.nojs .filter__button b {
+.nojs .filter__trigger b {
   display: none;
 }
